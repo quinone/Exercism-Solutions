@@ -1,8 +1,11 @@
 def equilateral(sides):
-    return all(sides) and sum(sides) > 2 * max(sides) and len(set(sides)) == 1
+    return isTriangle(sides) and len(set(sides)) == 1
         
 def isosceles(sides):    
-    return all(sides) and sum(sides) > 2 * max(sides) and len(set(sides)) <= 2 
+    return isTriangle(sides) and len(set(sides)) <= 2 
 
 def scalene(sides):
-    return all(sides) and sum(sides) > 2 * max(sides) and len(set(sides)) == 3
+    return isTriangle(sides) and len(set(sides)) == 3
+
+def isTriangle(sides):
+    return all(sides) and sum(sides) > 2 * max(sides)
