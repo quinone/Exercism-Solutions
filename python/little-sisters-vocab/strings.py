@@ -19,16 +19,7 @@ def make_word_groups(vocab_words):
             prefix applied separated with ::.
     """
 
-    prefix = vocab_words[0]
-    new_words = []
-    new_words.append(prefix)
-    for word in vocab_words[1:]:
-        new_words.append('::')
-        new_words.append(prefix + word)
-    return ' '.join(new_words)
-    
-
-
+    return (' :: ' + vocab_words[0]).join(vocab_words)
 
 def remove_suffix_ness(word):
     """Remove the suffix from the word while keeping spelling in mind.
@@ -37,11 +28,10 @@ def remove_suffix_ness(word):
     :return: str - of word with suffix removed & spelling adjusted.
     """
 
-    if word[-4:] == 'ness':
-        if word[-5] == 'i':
-            return word[:-5] + 'y'
-        return word[:-4]
-    return word
+    if word[-5] == 'i':
+        return word[:-5] + 'y'
+    return word[:-4]
+
 
 def adjective_to_verb(sentence, index):
     """Change the adjective within the sentence to a verb.
@@ -52,6 +42,4 @@ def adjective_to_verb(sentence, index):
     """
 
     sentence_list = sentence.split()
-    if sentence_list[index][-1] in [',', '.', '!', '?']:
-        return sentence_list[index][:-1] + 'en'
-    return sentence_list[index] + 'en'
+    return sentence_list[index].strip('.') + 'en'
