@@ -41,5 +41,4 @@ def adjective_to_verb(sentence, index):
     :return: str - word that changes the extracted adjective to a verb.
     """
 
-    sentence_list = sentence.split()
-    return sentence_list[index].strip('.') + 'en'
+    return sentence.strip('.').split()[index] + 'en'
