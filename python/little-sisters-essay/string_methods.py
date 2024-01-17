@@ -9,9 +9,9 @@ def capitalize_title(title):
     """
     result = ''
     for index in range(len(title)):
-        if title[0]:
+        if index == 0:
             result+=title[index].upper()
-        elif title[+1] == ' ':
+        elif title[index-1] == ' ':
             result+=title[index].upper()
         else:
             result+=title[index]
