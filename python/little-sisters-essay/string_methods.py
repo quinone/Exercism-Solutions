@@ -8,13 +8,6 @@ def capitalize_title(title):
     :return: str - title string in title case (first letters capitalized).
     """
     return ''.join([title[index].upper() if index == 0 or title[index-1] == ' ' else title[index] for index in range(len(title))])
-    #for index in range(len(title)):
-    #    if index == 0 or title[index-1] == ' ':
-    #        result+=title[index].upper()
-    #    else:
-    #        result+=title[index]
-    #return result
-            
 
 
 def check_sentence_ending(sentence):
@@ -23,7 +16,6 @@ def check_sentence_ending(sentence):
     :param sentence: str - a sentence to check.
     :return: bool - return True if punctuated correctly with period, False otherwise.
     """
-
     return sentence.strip()[-1] == '.'
 
 
@@ -44,5 +36,4 @@ def replace_word_choice(sentence, old_word, new_word):
     :param new_word: str - replacement word.
     :return: str - input sentence with new words in place of old words.
     """
-
     return sentence.replace(old_word,new_word)
