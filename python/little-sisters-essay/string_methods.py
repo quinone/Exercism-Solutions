@@ -24,7 +24,7 @@ def check_sentence_ending(sentence):
     :return: bool - return True if punctuated correctly with period, False otherwise.
     """
 
-    return sentence.strip(' ')[-1] == '.'
+    return sentence.strip()[-1] == '.'
 
 
 def clean_up_spacing(sentence):
@@ -33,9 +33,8 @@ def clean_up_spacing(sentence):
     :param sentence: str - a sentence to clean of leading and trailing space characters.
     :return: str - a sentence that has been cleaned of leading and trailing space characters.
     """
-
-    pass
-
+    return sentence.strip()
+    
 
 def replace_word_choice(sentence, old_word, new_word):
     """Replace a word in the provided sentence with a new one.
