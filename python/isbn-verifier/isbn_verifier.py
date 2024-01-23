@@ -1,19 +1,16 @@
 def is_valid(isbn):
     isbn = isbn.replace('-', '')
-    new_isbn = isbn.lower()
-    if len(new_isbn)!=10:
+    isbn = [*isbn]
+    if len(isbn)!=10:
         return False
+    
+    if isbn[-1] == 'X':
+        isbn[-1] = '10'
 
-    total = 0
-    d = 10
-    for index in range(10):
-        value = new_isbn[index]
-        if value.isalpha():
-            if value == 'x' and index == 9:
-                value = 10
-            else:
-                return False    
-        number = int(value)
-        total += d * number
-        d-=1
+    if any(number.isalpha() for number in isbn):
+        return False
+    
+    isbn = [int(digit) for digit in isbn]
+    total = sum(map(lambda digit, index: digit * index, isbn, range(10, 0, -1)))
+
     return total % 11 == 0
