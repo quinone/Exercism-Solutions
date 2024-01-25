@@ -50,12 +50,7 @@ def letter_grades(highest):
     """
 
     grade_band = (highest - 40) // 4
-    grades = []
-    for index in range(4):
-        grades.append(41 + (index * grade_band))
-
-    return grades
-
+    return [41 + (index * grade_band) for index in range(4)]
 
 def student_ranking(student_scores, student_names):
     """Organize the student's rank, name, and grade information in ascending order.
