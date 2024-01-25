@@ -50,9 +50,9 @@ def letter_grades(highest):
     """
 
     grade_band = (highest - 40) // 4
-    grades = [41,41,41,41]
+    grades = []
     for index in range(4):
-        grades[index] = grades[index] + (index * grade_band)
+        grades.append(41 + (index * grade_band))
 
     return grades
 
@@ -80,3 +80,4 @@ def perfect_score(student_info):
         if student[1] == 100:
             return student
     return []
+
