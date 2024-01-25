@@ -28,7 +28,7 @@ def above_threshold(student_scores, threshold):
     :return: list - of integer scores that are at or above the "best" threshold.
     """
 
-    return [score for score in student_scores if score >= threshold ]
+    return [score for score in student_scores if score >= threshold]
 
 
 def letter_grades(highest):
@@ -48,6 +48,7 @@ def letter_grades(highest):
     grade_band = (highest - 40) // 4
     return [41 + (index * grade_band) for index in range(4)]
 
+
 def student_ranking(student_scores, student_names):
     """Organize the student's rank, name, and grade information in ascending order.
 
@@ -56,7 +57,11 @@ def student_ranking(student_scores, student_names):
     :return: list - of strings in format ["<rank>. <student name>: <score>"].
     """
 
-    return [str(rank+1) + '. ' + student_names[rank] + ': ' + str(student_scores[rank]) for rank, name in enumerate(student_names)]
+    return [
+        str(rank + 1) + ". " + name + ": " + str(score)
+        for rank, (name, score) in enumerate(zip(student_names, student_scores))
+    ]
+
 
 def perfect_score(student_info):
     """Create a list that contains the name and grade of the first student to make a perfect score on the exam.
@@ -68,4 +73,3 @@ def perfect_score(student_info):
         if student[1] == 100:
             return student
     return []
-
