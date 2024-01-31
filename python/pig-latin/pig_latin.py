@@ -1,4 +1,5 @@
-vowel_sound = {"a", "e", "i", "o", "u"}
+VOWEL_SOUND = {"a", "e", "i", "o", "u"}
+IRREGULAR_VOWEL_SOUND = {"xr", "yt"}
 
 
 def translate(text):
@@ -6,18 +7,9 @@ def translate(text):
 
 
 def trans_pig(word):
-    if word[0] in vowel_sound or word[:2] in ("xr", "yt"):
-        word = word
-    elif word.startswith("qu"):
-        word = word[2:] + "qu"
-    else:
-        if word[1] in ("h", "c", "t"):
-            if word[2] in ("h", "r"):
-                word = word[3:] + word[:3]
-            else:
-                word = word[2:] + word[:2]
-        elif word[1:3] == "qu":
-            word = word[3:] + word[:3]
-        else:
-            word = word[1:] + word[0]
-    return word + "ay"
+    for tup in enumerate(word):
+        index = tup[0]
+        if (word[index] == "u" and word[index - 1] == "q") or (word[index + 1] == "y"):
+            return word[index + 1 :] + word[: index + 1] + "ay"
+        if word[index] in VOWEL_SOUND or word[: index + 2] in IRREGULAR_VOWEL_SOUND:
+            return word[index:] + word[:index] + "ay"
