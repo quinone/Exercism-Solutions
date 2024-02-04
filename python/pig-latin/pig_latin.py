@@ -3,7 +3,7 @@ IRREGULAR_VOWEL_SOUND = ("xr", "yt")
 
 
 def translate(text):
-    return " ".join([trans_pig(word) for word in text.split()])
+    return " ".join(trans_pig(word) for word in text.split())
 
 
 def trans_pig(word):
