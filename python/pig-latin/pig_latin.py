@@ -1,4 +1,5 @@
 VOWEL_SOUND = ("a", "e", "i", "o", "u")
+VOWEL_SOUND_Y = VOWEL_SOUND + tuple("y")
 IRREGULAR_VOWEL_SOUND = ("xr", "yt")
 
 
@@ -11,9 +12,6 @@ def trans_pig(word):
         return word + "ay"
 
     for index, letter in enumerate(word[1:], start=1):
-        if (
-            letter in VOWEL_SOUND
-            and not (letter == "u" and word[index - 1] == "q")
-            or letter == "y"
-        ):
+        if letter in VOWEL_SOUND_Y and not (letter == "u" and word[index - 1] == "q"):
             return word[index:] + word[:index] + "ay"
+    return word + "ay"
