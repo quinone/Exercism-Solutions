@@ -1,18 +1,14 @@
-open = {"(", "{", "["}
-close = {")","}", "]"}
-BRACKET = {
-    "(":")",
-    "[":"]",
-    "{":"}"
-}
+BRACKET = {"(": ")", "[": "]", "{": "}"}
+
 
 def is_paired(input_string):
-    opened_brackets = []
-    for char in input_string:
-        if char in BRACKET.keys():
-            opened_brackets.append(char)
-        if char in BRACKET.values():
-            if BRACKET[opened_brackets[-1]] != char:
+    list_unclosed_bracket = []
+    for character in input_string:
+        if character in BRACKET.keys():
+            list_unclosed_bracket.append(character)
+        if character in BRACKET.values():
+            if not list_unclosed_bracket or BRACKET[list_unclosed_bracket[-1]] != character:
                 return False
-            opened_brackets.pop()
-    return True
+            list_unclosed_bracket.pop()
+
+    return not list_unclosed_bracket
