@@ -11,7 +11,7 @@ COLOR_NUMBERS = {
             "white":9,
         }
 def color_code(color):
-    return COLOR_NUMBERS.values(color)
+    return COLOR_NUMBERS.get(color)
 
 
 def colors():
