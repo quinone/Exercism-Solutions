@@ -7,7 +7,7 @@ def classify(number):
 
     if number <= 0:
         raise ValueError("Classification is only possible for positive integers.")
-    result = sum_factors(number)
+    result = sum(n for n in range(1, number) if number % n == 0)
     if result == number:
         return "perfect"
     if result > number:
@@ -15,5 +15,4 @@ def classify(number):
     return "deficient"
 
 
-def sum_factors(number):
-    return sum(n for n in range(1, number) if number % n == 0)
+

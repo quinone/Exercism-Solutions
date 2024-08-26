@@ -1,13 +1,12 @@
-def response(hey_bob):    
-    bob = hey_bob.strip().replace(',', '')
-    if bob=='':
+def response(hey_bob):
+    bob = hey_bob.strip().replace(",", "")
+    if not bob:
         return "Fine. Be that way!"
-    if bob[-1]=='?':
-        if bob[:-1].isupper():
+    if bob.endswith('?'):
+        if bob.isupper():
             return "Calm down, I know what I'm doing!"
         return "Sure."
-    if bob[:-1].isupper():
+    if bob.isupper():
         return "Whoa, chill out!"
 
     return "Whatever."
-
