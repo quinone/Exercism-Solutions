@@ -1,5 +1,5 @@
 def roman(number):
-    result = []
+    result = ''
     values = {
         1000: "M",
         900: "CM",
@@ -19,6 +19,6 @@ def roman(number):
     for numerical, symbol in values.items():
         while numerical <= number:
             number = number - numerical
-            result.append(symbol)
+            result += symbol
 
-    return "".join(result)
+    return result
