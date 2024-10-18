@@ -1,64 +1,29 @@
 def annotate(minefield):
     # Function body starts here
-    for row in minefield:
-        if len(minefield[0]) - len(row) != 0:
-            raise ValueError("The board is invalid with current input.")
+    if minefield == []:
+        return []
+    if len(set(map(len, minefield))) != 1:
+        raise ValueError("The board is invalid with current input.")
 
-    row_total = len(minefield)
-    row_list = convertSpaceToZero(minefield)
+    directions = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+    row = len(minefield)
+    col = len(minefield[0])
+    result = [list(row) for row in minefield]
 
-    for y_coordinate, number_list in enumerate(row_list):
-        for x_coordinate, character in enumerate(number_list):
-            if character != "*":
+    for y in range(row):
+        for x in range(col):
+            if minefield[y][x] == "*":
                 continue
-            if x_coordinate > 0:
-                number_list[x_coordinate - 1] = checkIfStar(
-                    number_list[x_coordinate - 1]
-                )
-            if x_coordinate < len(number_list) - 1:
-                number_list[x_coordinate + 1] = checkIfStar(
-                    number_list[x_coordinate + 1]
-                )
-            if y_coordinate > 0:
-                temp_row = row_list[y_coordinate - 1]
-                if x_coordinate > 0:
-                    temp_row[x_coordinate - 1] = checkIfStar(temp_row[x_coordinate - 1])
-                temp_row[x_coordinate] = checkIfStar(temp_row[x_coordinate])
-                if x_coordinate < len(number_list) - 1:
-                    temp_row[x_coordinate + 1] = checkIfStar(temp_row[x_coordinate + 1])
-                row_list[y_coordinate - 1] = temp_row
-            if y_coordinate < row_total - 1:
-                temp_row = row_list[y_coordinate + 1]
-                if x_coordinate > 0:
-                    temp_row[x_coordinate - 1] = checkIfStar(temp_row[x_coordinate - 1])
-                temp_row[x_coordinate] = checkIfStar(temp_row[x_coordinate])
-                if x_coordinate < len(number_list) - 1:
-                    temp_row[x_coordinate + 1] = checkIfStar(temp_row[x_coordinate + 1])
-                row_list[y_coordinate + 1] = temp_row
-    result = []
-    for item in row_list:
-        temp = "".join(str(e).replace("0", " ") for e in item)
-        result.append(temp)
-    return result
-
-
-def checkIfStar(position):
-    if isinstance(position, int):
-        return position + 1
-    return "*"
-
-
-def convertSpaceToZero(minefield):
-    row_list = []
-    number_list = []
-    for row in minefield:
-        for character in row:
-            if character == "*":
-                number_list.append("*")
-            elif character == " ":
-                number_list.append(0)
-            else:
+            if minefield[y][x] != " ":
                 raise ValueError("The board is invalid with current input.")
-        row_list.append(number_list)
-        number_list = []
-    return row_list
+            mine_count = sum(
+                1
+                for dy, dx in directions
+                if 0 <= y + dy < row
+                and 0 <= x + dx < col
+                and minefield[y + dy][x + dx] == "*"
+            )
+            if mine_count > 0:
+                result[y][x] = str(mine_count)
+
+    return ["".join(row) for row in result]
