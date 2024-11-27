@@ -7,13 +7,13 @@
 #define MAX_PROTEINS 10
 
 typedef enum {
-   Methionine,
-   Phenylalanine,
-   Leucine,
-   Serine,
-   Tyrosine,
-   Cysteine,
-   Tryptophan,
+   Methionine,//AUG
+   Phenylalanine,//UUU UUC
+   Leucine,//UUA UUG
+   Serine,//UCU UCC USA UCG
+   Tyrosine,//UAU UAC
+   Cysteine,//UGU UGC
+   Tryptophan,//UGG
 } protein_t;
 
 typedef struct {

@@ -34,7 +34,7 @@ static void test_empty_rna_sequence_results_in_no_proteins(void)
 
 static void test_methionine_rna_sequence(void)
 {
-   TEST_IGNORE();   // delete this line to run test
+   //TEST_IGNORE();   // delete this line to run test
    proteins_t expected = {
       .valid = true,
       .count = 1,
@@ -46,7 +46,7 @@ static void test_methionine_rna_sequence(void)
 
 static void test_phenylalanine_rna_sequence_1(void)
 {
-   TEST_IGNORE();
+   //TEST_IGNORE();
    proteins_t expected = {
       .valid = true,
       .count = 1,
@@ -58,7 +58,7 @@ static void test_phenylalanine_rna_sequence_1(void)
 
 static void test_phenylalanine_rna_sequence_2(void)
 {
-   TEST_IGNORE();
+   //TEST_IGNORE();
    proteins_t expected = {
       .valid = true,
       .count = 1,
@@ -70,7 +70,7 @@ static void test_phenylalanine_rna_sequence_2(void)
 
 static void test_leucine_rna_sequence_1(void)
 {
-   TEST_IGNORE();
+   //TEST_IGNORE();
    proteins_t expected = {
       .valid = true,
       .count = 1,
@@ -82,7 +82,7 @@ static void test_leucine_rna_sequence_1(void)
 
 static void test_leucine_rna_sequence_2(void)
 {
-   TEST_IGNORE();
+   //TEST_IGNORE();
    proteins_t expected = {
       .valid = true,
       .count = 1,
@@ -355,7 +355,7 @@ static void test_unknown_amino_acids_not_part_of_a_codon_cant_translate(void)
 
 static void test_invalid_codon_cant_translate(void)
 {
-   TEST_IGNORE();
+   //TEST_IGNORE();
    proteins_t expected = {
       .valid = false,
    };
