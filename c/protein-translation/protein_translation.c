@@ -7,13 +7,7 @@ proteins_t proteins(const char *const rna){
     result.valid = true;
     
     size_t length = strlen(rna);
-    //if (length == 0) return result; 
-    //if (length % 3 != 0) {
-    //    result.valid = false;
-    //    return result;
-    //}
     protein_t decoded_protein;
-    bool valid = true;
 
     char buffer[4];
     // Read 3 letter buffer
@@ -39,10 +33,6 @@ proteins_t proteins(const char *const rna){
         else if ((!strcmp(buffer, "UGU"))||(!strcmp(buffer, "UGC"))) decoded_protein = 5;
         else if (!strcmp(buffer, "UGG")) decoded_protein = 6;
         else {
-            result.valid = false;
-            return result;
-        }
-        if (!valid) {
             result.valid = false;
             return result;
         }
